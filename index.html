@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Container -->
+        <div class="auth-container" id="authContainer">
+            <!-- Success Message Overlay -->
+            <div id="successMessage" class="success-message hidden">
+                <div class="success-content">
+                    <div class="success-icon">✓</div>
+                    <h3>Registration Successful!</h3>
+                    <p>Please login with your credentials</p>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+             
+            <form id="loginForm" class="auth-form active">
+                <h2>Login to Hackathon Platform</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <h2>Create New Account</h2>
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerRole">Role</label>
+                    <select id="registerRole" required>
+                        <option value="participant">Participant</option>
+                        <option value="organizer">Organizer</option>
+                        <option value="judge">Judge</option>
+                    </select>
+                </div>
+                <button onclick="gotologin" type="submit" class="btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- Dashboard Container -->
+        <div class="dashboard-container hidden" id="dashboardContainer">
+            <nav class="dashboard-nav">
+                <h1>Hackathon Platform</h1>
+                <div class="user-info">
+                    <span id="userName">User Name</span>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+            </nav>
+
+            <div class="dashboard-content">
+                <!-- Add this inside the dashboard-content div in index.html -->
+<div class="team-registration-section">
+    <h2>Team Registration</h2>
+    <div class="team-actions">
+        <button id="createTeamBtn" class="btn-primary">Create Team</button>
+        <button id="joinTeamBtn" class="btn-secondary">Join Existing Team</button>
+    </div>
+    
+    <!-- Create Team Modal -->
+    <div id="createTeamModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Create New Team</h3>
+            <form id="createTeamForm">
+                <div class="form-group">
+                    <label for="teamName">Team Name</label>
+                    <input type="text" id="teamName" required>
+                </div>
+                <div class="form-group">
+                    <label for="hackathonSelect">Select Hackathon</label>
+                    <select id="hackathonSelect" required></select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Create Team</button>
+                    <button type="button" class="btn-secondary close-modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Join Team Modal -->
+    <div id="joinTeamModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Join Team</h3>
+            <div class="team-list" id="availableTeams">
+                <!-- Teams will be populated here -->
+            </div>
+            <button class="btn-secondary close-modal">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Chat Section -->
+<div class="chat-container">
+    <div class="chat-header">
+        <h3>Team Chat</h3>
+        <select id="chatRoomSelect">
+            <option value="team">Team Chat</option>
+            <option value="hackathon">Hackathon Chat</option>
+        </select>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message...">
+        <button id="sendMessageBtn" class="btn-primary">Send</button>
+    </div>
+</div>
+                <div class="hackathons-list">
+                    <h2>Active Hackathons</h2>
+                    <div id="hackathonsList" class="cards-grid"></div>
+                </div>
+
+                <div class="team-section">
+                    <h2>My Team</h2>
+                    <div id="teamInfo" class="team-info"></div>
+                </div>
+
+                <div class="submissions-section">
+                    <h2>Project Submissions</h2>
+                    <div id="submissionsList" class="submissions-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
